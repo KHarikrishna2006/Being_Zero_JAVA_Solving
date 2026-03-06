@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+class BSTNode{
+    int data;
+    BSTNode right;
+    BSTNode left;
+    public BSTNode(int d){
+        this.data=d;
+        this.left=null;
+        this.right=null;
+    }
+}
+class Solutions{
+    void preOrder(BSTNode r){
+        if(r==null) return;
+        System.out.print(r.data+" ");
+        preOrder(r.left);
+        preOrder(r.right);
+    }
+    BSTNode insert(BSTNode r,int x){
+        if(r==null) return new BSTNode(x);
+        if(x<r.data) 
+            r.left=insert(r.left,x);
+        else
+            r.right=insert(r.right,x);
+        return r;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        BSTNode root=null;
+        Solutions sl=new Solutions();
+        while(sc.hasNextInt()){
+            root=sl.insert(root,sc.nextInt());
+        }
+        sl.preOrder(root);
+    }
+}
