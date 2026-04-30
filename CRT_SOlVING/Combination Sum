@@ -1,0 +1,21 @@
+class Solution {
+    List<List<Integer>> r=new ArrayList<>();
+    List<Integer> t=new ArrayList<>();
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        bctac(0,candidates,target);
+        return r;
+    }
+    public void bctac(int in,int[] c,int ta){
+        if(ta==0){
+            r.add(new ArrayList<>(t));
+            return;
+        }
+        for(int i=in;i<c.length;i++){
+            if(c[i]>ta) continue;
+            t.add(c[i]);
+            bctac(i,c,ta-c[i]);
+            t.remove(t.size()-1);
+        }
+    }
+}
