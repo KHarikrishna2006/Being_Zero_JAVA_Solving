@@ -1,0 +1,7 @@
+class Solution:
+    def minimumDeletions(self, nums: List[int]) -> int:
+        mi=min(nums)
+        ma=max(nums)
+        mii=nums.index(mi)
+        mai=nums.index(ma)
+        return min(max(mii,mai)+1,len(nums)-min(mai,mii),(min(mai,mii)+1)+(len(nums)-max(mai,mii)))
